@@ -41,9 +41,11 @@ public class LevelController : MonoBehaviour
         {
             CircleVertical(3);
         }
+
+        Rotate();
     }
 
-    private void Changed()
+    private void Rotate()
     {
         for (int y = 0; y < levelgrid.Length; y++)
         {
@@ -51,7 +53,7 @@ public class LevelController : MonoBehaviour
             {
                 if (levelgrid[y].row[x] != null)
                 {
-                    levelgrid[y].row[x].transform.position = new Vector2(x * 4 + offset.x, y * 4 + offset.y);
+                    levelgrid[y].row[x].transform.position += (new Vector3(x * 4 + offset.x, y * 4 + offset.y, 0)- levelgrid[y].row[x].transform.position) * 16 * Time.deltaTime;
                 }
             }
         }
@@ -65,8 +67,6 @@ public class LevelController : MonoBehaviour
             levelgrid[y].row[x - 1] = levelgrid[y].row[x];
         }
         levelgrid[y].row[levelgrid[y].row.Length - 1] = last;
-
-        Changed();
     }
 
     private void CircleVertical(int x)
@@ -77,7 +77,5 @@ public class LevelController : MonoBehaviour
             levelgrid[y - 1].row[x] = levelgrid[y].row[x];
         }
         levelgrid[levelgrid.Length - 1].row[x] = last;
-
-        Changed();
     }
 }
