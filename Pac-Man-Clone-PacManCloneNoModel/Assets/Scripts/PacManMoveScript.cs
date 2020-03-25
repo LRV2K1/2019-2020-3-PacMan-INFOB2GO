@@ -94,7 +94,6 @@ public class PacManMoveScript : MonoBehaviour
         Vector2 pos = transform.position.Round();
         //pos += new Vector2(0.5f, 0.5f);
         RaycastHit2D hit = Physics2D.Linecast(pos + dir, pos, ~layerMask);
-        Debug.DrawLine(pos, transform.position, Color.red);
         return (hit.collider == GetComponent<Collider2D>());
     }
 
