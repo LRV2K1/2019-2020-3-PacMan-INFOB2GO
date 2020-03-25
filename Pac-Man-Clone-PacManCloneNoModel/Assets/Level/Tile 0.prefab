@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2958059848680356269}
   - component: {fileID: 2991497164735999046}
+  - component: {fileID: 8673310885155271846}
   m_Layer: 0
   m_Name: Tile 0
   m_TagString: Maze
@@ -81,3 +82,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8673310885155271846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627474748771285742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e86d6e6cbf058d49916406d93b77127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetposition: {x: 0, y: 0}
+  layermask:
+    serializedVersion: 2
+    m_Bits: 256
+  layermask2:
+    serializedVersion: 2
+    m_Bits: 512

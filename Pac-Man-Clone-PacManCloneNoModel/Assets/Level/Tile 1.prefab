@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9206010013522347922}
   - component: {fileID: 9206010013522347921}
   - component: {fileID: 9206010013522347920}
+  - component: {fileID: 5472970891774018311}
   m_Layer: 0
   m_Name: Tile 1
   m_TagString: Maze
@@ -108,3 +109,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4, y: 4}
   m_EdgeRadius: 0
+--- !u!114 &5472970891774018311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9206010013522347923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e86d6e6cbf058d49916406d93b77127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetposition: {x: 0, y: 0}
+  layermask:
+    serializedVersion: 2
+    m_Bits: 512
+  layermask2:
+    serializedVersion: 2
+    m_Bits: 256

@@ -7,7 +7,7 @@ using TMPro;
 public class PacManMoveScript : MonoBehaviour
 {
     public float movespeed = 0.3f;
-    Vector2 destination = Vector2.zero;
+    public Vector2 destination = Vector2.zero;
     public AudioSource chomp;
     public Vector2 moveDirection;
     public TextMeshProUGUI score;
@@ -92,7 +92,9 @@ public class PacManMoveScript : MonoBehaviour
     {
         LayerMask layerMask = LayerMask.GetMask("Ghosts");
         Vector2 pos = transform.position.Round();
+        //pos += new Vector2(0.5f, 0.5f);
         RaycastHit2D hit = Physics2D.Linecast(pos + dir, pos, ~layerMask);
+        Debug.DrawLine(pos, transform.position, Color.red);
         return (hit.collider == GetComponent<Collider2D>());
     }
 
