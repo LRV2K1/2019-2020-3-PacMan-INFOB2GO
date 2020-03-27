@@ -9,7 +9,7 @@ public class InkyScript : GhostBehaviourScript
 
     private void Awake()
     {
-        startPos = new Vector2(13f, 17f);
+        startPos = transform.position;
     }
 
     public override void Start()

@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhostBehaviourScript : MonoBehaviour
+public class GhostBehaviourScript : MovingEntity
 {
     public float moveSpeed;
     public LayerMask layerMask;
-    public LineRenderer lineRenderer;
     public GameObject GameManager;
     public AudioSource eatGhost;
 
@@ -39,6 +38,10 @@ public class GhostBehaviourScript : MonoBehaviour
     //If at current destination. It will set a new update all relevant variables and set a new destination according to its pathfinding logic
     void Update()
     {
+        if (!move)
+        {
+            return;
+        }
         PickTargetTile();
         if ((Vector2)gameObject.transform.position == destination)
         {
@@ -54,10 +57,6 @@ public class GhostBehaviourScript : MonoBehaviour
         //Sets variables so that the correct animation shows
         GetComponent<Animator>().SetFloat("DirX", currentDir.x);
         GetComponent<Animator>().SetFloat("DirY", currentDir.y);
-
-        //Renders lines towards targetile for testing purposes, disable in actual gameplay
-        //lineRenderer.SetPosition(0, transform.position.Round());
-        //lineRenderer.SetPosition(1, targetTile);
     }
     
     //Picks the desired targettile based on if the ghost is in scattermode or not
@@ -71,6 +70,18 @@ public class GhostBehaviourScript : MonoBehaviour
         {
             Chase();
         }
+    }
+
+    public override void SetMove(bool move)
+    {
+        base.SetMove(move);
+        destination = transform.position;
+        currentDir = Vector2.zero;
+        targetTile = transform.position;
+        scatterTile = transform.position;
+        waypointIndex = 0;
+        path.Clear();
+        path.Add(transform.position);
     }
 
     //Sets ghost behaviour to scatter, can be overriden to make each ghost scatter behaviour different

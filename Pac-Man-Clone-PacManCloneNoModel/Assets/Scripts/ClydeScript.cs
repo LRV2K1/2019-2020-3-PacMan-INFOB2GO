@@ -8,7 +8,7 @@ public class ClydeScript : GhostBehaviourScript
 
     private void Awake()
     {
-        startPos = new Vector2(16f, 17f);
+        startPos = transform.position;
     }
     // Start is called before the first frame update
     public override void Start()

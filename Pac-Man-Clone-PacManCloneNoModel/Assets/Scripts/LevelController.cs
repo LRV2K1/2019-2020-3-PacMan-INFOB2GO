@@ -23,7 +23,7 @@ public class LevelController : MonoBehaviour
     {
         //startlevelgrid = levelgrid;
         startlevelgrid = CopyGrid(levelgrid);
-        NewPosition();
+        SetPosition();
     }
 
     //Omdat het structs zijn moet het zo gedaan worden
@@ -44,17 +44,20 @@ public class LevelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            CircleVertical(1);
+        }
         Change();
     }
 
     public void ResetTilePosition()
     {
-        Debug.Log("test");
         levelgrid = CopyGrid(startlevelgrid);
-        NewPosition();
+        SetPosition();
     }
 
-    void NewPosition()
+    void NewTargetPosition()
     {
         for (int y = 0; y < levelgrid.Length; y++)
         {
@@ -63,6 +66,20 @@ public class LevelController : MonoBehaviour
                 if (levelgrid[y].row[x] != null)
                 {
                     levelgrid[y].row[x].SetTargetPosition(new Vector2(x * 4 + offset.x, y * 4 + offset.y));
+                }
+            }
+        }
+    }
+
+    void SetPosition()
+    {
+        for (int y = 0; y < levelgrid.Length; y++)
+        {
+            for (int x = 0; x < levelgrid[y].row.Length; x++)
+            {
+                if (levelgrid[y].row[x] != null)
+                {
+                    levelgrid[y].row[x].SetPosition(new Vector2(x * 4 + offset.x, y * 4 + offset.y));
                 }
             }
         }
@@ -118,7 +135,7 @@ public class LevelController : MonoBehaviour
             levelgrid[y].row[x - 1] = levelgrid[y].row[x];
         }
         levelgrid[y].row[levelgrid[y].row.Length - 1] = last;
-        NewPosition();
+        NewTargetPosition();
     }
 
     private void CircleVertical(int x)
@@ -129,7 +146,7 @@ public class LevelController : MonoBehaviour
             levelgrid[y - 1].row[x] = levelgrid[y].row[x];
         }
         levelgrid[levelgrid.Length - 1].row[x] = last;
-        NewPosition();
+        NewTargetPosition();
     }
 
     private void CircleHorizontalRight(int y)
@@ -141,7 +158,7 @@ public class LevelController : MonoBehaviour
             levelgrid[y].row[x + 1] = levelgrid[y].row[x];
         }
         levelgrid[y].row[0] = last;
-        NewPosition();
+        NewTargetPosition();
     }
 
     private void CircleVerticalRight(int x)
@@ -152,6 +169,6 @@ public class LevelController : MonoBehaviour
             levelgrid[y + 1].row[x] = levelgrid[y].row[x];
         }
         levelgrid[0].row[x] = last;
-        NewPosition();
+        NewTargetPosition();
     }
 }

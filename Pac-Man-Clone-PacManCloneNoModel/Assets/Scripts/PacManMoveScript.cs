@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class PacManMoveScript : MonoBehaviour
+public class PacManMoveScript : MovingEntity
 {
     public float movespeed = 0.3f;
     public Vector2 destination = Vector2.zero;
@@ -13,17 +13,13 @@ public class PacManMoveScript : MonoBehaviour
     public TextMeshProUGUI score;
     public GameObject GameManager;
     public Vector2 startPos;
-    public LineRenderer lineRenderer;
 
     [HideInInspector]
     public float timeSpent;
 
-    bool move = true;
-
     void Start()
     {
-        startPos = new Vector2(15, 8);
-        //GameManager.GetComponent<GameManagerScript>().ResetGame += StartGame;
+        startPos = transform.position;
         destination = transform.position;
     }
 
@@ -79,17 +75,9 @@ public class PacManMoveScript : MonoBehaviour
         return moveDirection;
     }
 
-    Vector2 RoundVector2(Vector2 vector)
+    public override void SetMove(bool move)
     {
-        Vector2 returnvector;
-        returnvector = new Vector2(Mathf.Round(vector.x), Mathf.Round(vector.y));
-        return returnvector;
-    }
-
-    public void SetMove(bool move)
-    {
-        this.move = move;
-        transform.position = RoundVector2(transform.position);
+        base.SetMove(move);
         destination = transform.position;
     }
 
@@ -98,8 +86,8 @@ public class PacManMoveScript : MonoBehaviour
     {
         LayerMask layerMask = LayerMask.GetMask("Ghosts");
         Vector2 pos = transform.position.Round();
-        //pos += new Vector2(0.5f, 0.5f);
         RaycastHit2D hit = Physics2D.Linecast(pos + dir, pos, ~layerMask);
+        Debug.DrawLine(pos, pos + dir, Color.green);
         return (hit.collider == GetComponent<Collider2D>());
     }
 

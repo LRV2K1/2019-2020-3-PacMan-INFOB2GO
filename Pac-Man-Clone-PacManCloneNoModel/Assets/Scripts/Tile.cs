@@ -9,7 +9,8 @@ public class Tile : MonoBehaviour
     Vector2 passengerOffset;
     public LayerMask layermask;
     public LayerMask layermask2;
-    Collider2D passenger;
+    //Collider2D passenger;
+    MovingEntity passenger;
     bool move;
 
     void Start()
@@ -17,29 +18,44 @@ public class Tile : MonoBehaviour
         move = false;
     }
 
+    public void SetPosition(Vector2 position)
+    {
+        transform.position = (Vector3)position;
+        targetposition = position;
+    }
+
     public void SetTargetPosition(Vector2 targetposition)
     {
+        if (transform.position == (Vector3)targetposition)
+        {
+            return;
+        }
         move = true;
-        passenger = Physics2D.OverlapArea(transform.position - transform.localScale / 2, transform.position + transform.localScale / 2, layermask + layermask2);
-        Debug.DrawLine(transform.position - transform.localScale / 2, transform.position + transform.localScale / 2, Color.red);
+        Collider2D collider = Physics2D.OverlapArea(transform.position - transform.localScale * 2, transform.position + transform.localScale * 2, layermask + layermask2);
+        if (collider != null)
+        {
+            passenger = collider.GetComponent<MovingEntity>();
+        }
+        else
+        {
+            passenger = null;
+        }
        
         this.targetposition = targetposition;
 
-        if (Player())
-        {
-            PacManMoveScript player = passenger.GetComponent<PacManMoveScript>();
-            player.SetMove(false);
-        }
-
         if (passenger != null)
         {
-            passengerOffset = transform.position - passenger.transform.position;
+            passenger.SetMove(false);
+            //passengerOffset = transform.position - passenger.transform.position;
+            //passengerOffset.Normalize();
+            passengerOffset = Vector2.zero;
         }
     }
 
     // Update is called once per frame
     void Update()
-    {   
+    {
+        Debug.DrawLine(transform.position - transform.localScale * 2, transform.position + transform.localScale * 2, Color.red);
         if ((Mathf.Abs(transform.position.x - targetposition.x) > 0.1f || Mathf.Abs(transform.position.y - targetposition.y) > 0.1f) && move)
         {
             transform.position += (new Vector3(targetposition.x, targetposition.y, 0) - transform.position) * 16 * Time.deltaTime;
@@ -54,27 +70,12 @@ public class Tile : MonoBehaviour
             move = false;
             transform.position = targetposition;
 
-            if (Player())
-            {
-                PacManMoveScript player = passenger.GetComponent<PacManMoveScript>();
-                player.SetMove(true);
-            }
-
             if (passenger != null)
             {
+                passenger.SetMove(true);
                 passenger.gameObject.transform.position = transform.position - new Vector3(passengerOffset.x, passengerOffset.y, 0);
             }
         }
 
-    }
-
-    bool Player()
-    {
-        if (passenger != null)
-        {
-            PacManMoveScript player = passenger.GetComponent<PacManMoveScript>();
-            return player != null;
-        }
-        return false;
     }
 }
