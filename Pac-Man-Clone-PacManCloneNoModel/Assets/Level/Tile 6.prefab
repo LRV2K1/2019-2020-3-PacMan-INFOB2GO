@@ -116,7 +116,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.1
 --- !u!61 &4544144075507779670
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.1
 --- !u!61 &4544144075507779671
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.1
 --- !u!61 &4544144075507779668
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -194,7 +194,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.1
 --- !u!114 &3702158924055933580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +207,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e86d6e6cbf058d49916406d93b77127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetposition: {x: 0, y: 0}
   layermask:
     serializedVersion: 2
     m_Bits: 256
