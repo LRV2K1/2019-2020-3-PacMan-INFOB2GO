@@ -11,16 +11,18 @@ public class GameManagerScript : MonoBehaviour
     public GameObject Pinky;
     public GameObject Clyde;
     public GameObject PacMan;
+    public GameObject Level;
 
     [HideInInspector]
     public int pelletsCollected { get; set; }
     [HideInInspector]
-    public int powerPelletsCollected { get; set; }
     private int lives;
     private List<GameObject> livesList;
     public GameObject life1, life2, life3;
 
     public AudioSource deathSound, startSound, victorySound;
+
+    int pelletNumber;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,8 @@ public class GameManagerScript : MonoBehaviour
         livesList.Add(life2); 
         livesList.Add(life3);
         StartCoroutine(StartGame());
+
+        pelletNumber = FindObjectsOfType<PacDotScript>().Length;
     }
 
     //Starts the sequence of ghosts moving from the ghosthouse. Ghosts aren't activated until they are outside the house. Time to release can be varied by changing the WaitForSeconds variable
@@ -136,6 +140,7 @@ public class GameManagerScript : MonoBehaviour
         Pinky.GetComponent<PinkyScript>().enabled = false;
         Inky.GetComponent<InkyScript>().enabled = false;
         Clyde.GetComponent<ClydeScript>().enabled = false;
+        Level.GetComponent<LevelController>().change = false;
 
         yield return new WaitForSeconds(3);
 
@@ -155,6 +160,7 @@ public class GameManagerScript : MonoBehaviour
         Blinky.GetComponent<BlinkyScript>().StartGame();
         StartCoroutine(DetermineGhostBehaviour());
         StartCoroutine(GhostHouseBehaviour());
+        Level.GetComponent<LevelController>().change = true;
 
         yield break;
     }
@@ -167,6 +173,7 @@ public class GameManagerScript : MonoBehaviour
         Inky.GetComponent<InkyScript>().ResetGame();
         Pinky.GetComponent<PinkyScript>().ResetGame();
         Clyde.GetComponent<ClydeScript>().ResetGame();
+        Level.GetComponent<LevelController>().ResetTilePosition();
     }
 
     //Sets ghosts to scared behaviour for 8 seconds
@@ -192,7 +199,7 @@ public class GameManagerScript : MonoBehaviour
 
     public IEnumerator CheckForGameEnd()
     {
-        if(pelletsCollected == 240 && powerPelletsCollected == 4)
+        if(pelletsCollected >= pelletNumber)
         {
             //TODO: Stop all movement
             victorySound.Play();

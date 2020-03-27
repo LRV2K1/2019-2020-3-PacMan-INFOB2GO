@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class LevelController : MonoBehaviour
 {
+    public bool change = false;
+
     float timer = 2f;
     public Vector2 offset = new Vector2(0, 1);
     [System.Serializable]
@@ -14,10 +16,12 @@ public class LevelController : MonoBehaviour
     }
 
     public Row[] levelgrid;
+    public Row[] startlevelgrid;
 
     // Start is called before the first frame update
     void Start()
     {
+        startlevelgrid = levelgrid;
         NewPosition();
     }
 
@@ -25,6 +29,12 @@ public class LevelController : MonoBehaviour
     void Update()
     {
         Change();
+    }
+
+    public void ResetTilePosition()
+    {
+        levelgrid = startlevelgrid;
+        NewPosition();
     }
 
     void NewPosition()
@@ -35,7 +45,7 @@ public class LevelController : MonoBehaviour
             {
                 if (levelgrid[y].row[x] != null)
                 {
-                    levelgrid[y].row[x].targetposition = new Vector2(x * 4 + offset.x, y * 4 + offset.y);
+                    levelgrid[y].row[x].SetTargetPosition(new Vector2(x * 4 + offset.x, y * 4 + offset.y));
                 }
             }
         }
@@ -43,6 +53,10 @@ public class LevelController : MonoBehaviour
 
     private void Change()
     {
+        if (!change)
+        {
+            return;
+        }
         timer -= Time.deltaTime;
         if (timer <= 0)
         {

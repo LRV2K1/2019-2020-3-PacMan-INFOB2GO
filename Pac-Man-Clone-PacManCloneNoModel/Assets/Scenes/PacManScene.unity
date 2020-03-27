@@ -19181,6 +19181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movespeed: 0.2
+  destination: {x: 0, y: 0}
   chomp: {fileID: 1329145734}
   moveDirection: {x: 0, y: 0}
   score: {fileID: 1695616410}
@@ -19565,6 +19566,7 @@ MonoBehaviour:
   Pinky: {fileID: 1900519875}
   Clyde: {fileID: 1789111516}
   PacMan: {fileID: 1329145727}
+  Level: {fileID: 1638986859}
   life1: {fileID: 829024815}
   life2: {fileID: 706905558}
   life3: {fileID: 1672808432}
@@ -25989,6 +25991,12 @@ Transform:
   m_Father: {fileID: 1393661686}
   m_RootOrder: 141
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1638986859 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6974569470789261410, guid: 2b84411dccf7265479ba31685eac9f62,
+    type: 3}
+  m_PrefabInstance: {fileID: 6974569472308755433}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1653784417
 GameObject:
   m_ObjectHideFlags: 0

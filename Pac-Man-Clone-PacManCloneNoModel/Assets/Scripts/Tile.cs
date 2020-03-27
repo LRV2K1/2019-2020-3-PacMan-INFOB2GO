@@ -5,13 +5,17 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Vector2 targetposition;
+    Vector2 targetposition;
     public LayerMask layermask;
     public LayerMask layermask2;
     void Start()
     {
     }
 
+    public void SetTargetPosition(Vector2 targetposition)
+    {
+        this.targetposition = targetposition;
+    }
 
     // Update is called once per frame
     void Update()

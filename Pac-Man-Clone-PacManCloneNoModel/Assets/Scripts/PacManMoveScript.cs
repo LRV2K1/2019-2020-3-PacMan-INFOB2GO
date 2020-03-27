@@ -103,7 +103,7 @@ public class PacManMoveScript : MonoBehaviour
         if (collision.tag == "PowerPellet")
         {
             GameManager.GetComponent<GameManagerScript>().PowerPelletCollected();
-            GameManager.GetComponent<GameManagerScript>().powerPelletsCollected += 1;
+            GameManager.GetComponent<GameManagerScript>().pelletsCollected += 1;
 
             score.GetComponent<ScoreScript>().ScorePowerPellet();
             StartCoroutine(GameManager.GetComponent<GameManagerScript>().CheckForGameEnd());
