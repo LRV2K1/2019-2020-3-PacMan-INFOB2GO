@@ -18,6 +18,8 @@ public class PacManMoveScript : MonoBehaviour
     [HideInInspector]
     public float timeSpent;
 
+    bool move = true;
+
     void Start()
     {
         startPos = new Vector2(15, 8);
@@ -28,6 +30,10 @@ public class PacManMoveScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!move)
+        {
+            return;
+        }
         // Come up with better name for 'p'
         Vector2 p = Vector2.MoveTowards(transform.position, destination, movespeed);
         GetComponent<Rigidbody2D>().MovePosition(p);
@@ -68,23 +74,23 @@ public class PacManMoveScript : MonoBehaviour
     //Checks the direction Pacman is moving in. This is used in Inky and Pinky's pathfinding logic
     Vector2 CheckMoveDirection(Vector2 dir)
     {
-        if (dir.x > 0.01)
-        {
-            moveDirection = Vector2.right;
-        }
-        if (dir.x < -0.01)
-        {
-            moveDirection = Vector2.left;
-        }
-        if (dir.y > 0.01)
-        {
-            moveDirection = Vector2.up;
-        }
-        if (dir.y < -0.01)
-        {
-            moveDirection = Vector2.down;
-        }
+        dir.Normalize();
+        moveDirection = dir;
         return moveDirection;
+    }
+
+    Vector2 RoundVector2(Vector2 vector)
+    {
+        Vector2 returnvector;
+        returnvector = new Vector2(Mathf.Round(vector.x), Mathf.Round(vector.y));
+        return returnvector;
+    }
+
+    public void SetMove(bool move)
+    {
+        this.move = move;
+        transform.position = RoundVector2(transform.position);
+        destination = transform.position;
     }
 
     // Cast Line from 'next square in movedirection to 'Pac-Man'. True = hit pac man, ignores ghosts
