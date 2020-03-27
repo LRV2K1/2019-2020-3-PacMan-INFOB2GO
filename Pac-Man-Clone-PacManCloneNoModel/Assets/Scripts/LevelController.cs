@@ -44,10 +44,6 @@ public class LevelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            CircleVertical(1);
-        }
         Change();
     }
 
