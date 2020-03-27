@@ -21,8 +21,24 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startlevelgrid = levelgrid;
+        //startlevelgrid = levelgrid;
+        startlevelgrid = CopyGrid(levelgrid);
         NewPosition();
+    }
+
+    //Omdat het structs zijn moet het zo gedaan worden
+    Row[] CopyGrid(Row[] box)
+    {
+        Row[] returnbox = new Row[box.Length];
+        for (int y = 0; y < returnbox.Length; y++)
+        {
+            returnbox[y].row = new Tile[box[y].row.Length];
+            for (int x = 0; x < returnbox[y].row.Length; x++)
+            {
+                returnbox[y].row[x] = box[y].row[x];
+            }
+        }
+        return returnbox;
     }
 
     // Update is called once per frame
@@ -33,7 +49,8 @@ public class LevelController : MonoBehaviour
 
     public void ResetTilePosition()
     {
-        levelgrid = startlevelgrid;
+        Debug.Log("test");
+        levelgrid = CopyGrid(startlevelgrid);
         NewPosition();
     }
 
