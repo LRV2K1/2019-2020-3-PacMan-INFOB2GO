@@ -175,6 +175,8 @@ public class GhostBehaviourScript : MovingEntity
                 smallestMagnitude = magnitude;
             }
         }
+        if (bestTile == Vector2.zero)
+            return transform.position;
         return bestTile;
     }
 

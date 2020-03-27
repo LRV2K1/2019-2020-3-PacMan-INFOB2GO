@@ -60,7 +60,7 @@ public class GameManagerScript : MonoBehaviour
     //This Coroutine moves the ghost in the input out of the ghost house via 2 waypoints, then activates their script
     IEnumerator MoveFromHouse(GameObject ghost, Vector2 waypoint1, Vector2 waypoint2)
     {
-        while ((Vector2)ghost.transform.position != waypoint1)
+        /*while ((Vector2)ghost.transform.position != waypoint1)
         {
             Vector2 d = Vector2.MoveTowards(ghost.transform.position, waypoint1, 0.05f);
             ghost.GetComponent<Rigidbody2D>().MovePosition(d);
@@ -71,7 +71,7 @@ public class GameManagerScript : MonoBehaviour
             Vector2 d = Vector2.MoveTowards(ghost.transform.position, waypoint2, 0.05f);
             ghost.GetComponent<Rigidbody2D>().MovePosition(d);
             yield return new WaitForEndOfFrame();
-        }
+        }*/
 
         if (ghost.name == "Pinky")
             ghost.GetComponent<PinkyScript>().StartGame();
