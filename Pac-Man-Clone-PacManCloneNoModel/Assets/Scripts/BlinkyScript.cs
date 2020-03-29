@@ -11,7 +11,7 @@ public class BlinkyScript : GhostBehaviourScript
     {
         startPos = transform.position;
         scatterTile = new Vector2(28, 32);
-        destination = gameObject.transform.position.Round()/* + new Vector3(-1f, 0f, 0f)*/;
+        Destination = gameObject.transform.position.Round()/* + new Vector3(-1f, 0f, 0f)*/;
         currentDir = new Vector2(-1f, 0f);
     }
 
@@ -23,7 +23,7 @@ public class BlinkyScript : GhostBehaviourScript
     public override void StartGame()
     {
         enabled = true;
-        destination = transform.position;
+        Destination = transform.position;
         UpdateLists();
     }
 }

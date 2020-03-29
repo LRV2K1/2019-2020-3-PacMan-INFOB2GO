@@ -640,7 +640,7 @@ MonoBehaviour:
     - {fileID: 273681203683312356}
     - {fileID: 6197944460065195324}
     - {fileID: 7206787832044598246}
-  startlevelgrid: []
+  size: {x: 9, y: 9}
 --- !u!1 &9117378349320926253
 GameObject:
   m_ObjectHideFlags: 0

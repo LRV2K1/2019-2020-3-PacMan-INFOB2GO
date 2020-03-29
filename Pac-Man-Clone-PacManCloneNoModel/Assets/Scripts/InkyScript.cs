@@ -15,7 +15,7 @@ public class InkyScript : GhostBehaviourScript
     public override void Start()
     {
         scatterTile = new Vector2(28, -1);
-        destination = gameObject.transform.position.Round()/* + new Vector3(-1f, 0f, 0f)*/;
+        Destination = gameObject.transform.position.Round()/* + new Vector3(-1f, 0f, 0f)*/;
         currentDir = new Vector2(-1f, 0f);
     }
 
@@ -37,7 +37,7 @@ public class InkyScript : GhostBehaviourScript
     public override void StartGame()
     {
         enabled = true;
-        destination = transform.position;
+        Destination = transform.position;
         UpdateLists();
     }
 

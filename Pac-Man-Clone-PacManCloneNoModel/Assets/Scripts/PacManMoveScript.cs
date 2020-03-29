@@ -18,9 +18,8 @@ public class PacManMoveScript : MovingEntity
 
     void Start()
     {
-        destination = Vector2.zero;
         startPos = transform.position;
-        destination = transform.position;
+        Destination = transform.position;
     }
 
     // Update is called once per frame
@@ -31,37 +30,37 @@ public class PacManMoveScript : MovingEntity
             return;
         }
         // Come up with better name for 'p'
-        Vector2 p = Vector2.MoveTowards(transform.position, destination, movespeed);
+        Vector2 p = Vector2.MoveTowards(transform.position, Destination, movespeed);
         GetComponent<Rigidbody2D>().MovePosition(p);
 
         // Check for Input if not moving
-        if ((Vector2)transform.position == destination)
+        if ((Vector2)transform.position == Destination)
         {
             if (Input.GetKey(KeyCode.UpArrow) && valid(Vector2.up))
-                destination = (Vector2)transform.position + Vector2.up;
+                Destination = (Vector2)transform.position + Vector2.up;
             if (Input.GetKey(KeyCode.RightArrow) && valid(Vector2.right))
-                destination = (Vector2)transform.position + Vector2.right;
+                Destination = (Vector2)transform.position + Vector2.right;
             if (Input.GetKey(KeyCode.DownArrow) && valid(-Vector2.up))
-                destination = (Vector2)transform.position - Vector2.up;
+                Destination = (Vector2)transform.position - Vector2.up;
             if (Input.GetKey(KeyCode.LeftArrow) && valid(-Vector2.right))
-                destination = (Vector2)transform.position - Vector2.right;
+                Destination = (Vector2)transform.position - Vector2.right;
         }
         
         //works for now, counts moving in a wall as moving
-        if ((Vector2)transform.position == destination && !Input.anyKey)
+        if ((Vector2)transform.position == Destination && !Input.anyKey)
         {
             timeSpent += Time.deltaTime;
         }
 
 
         //To Fix: Plays on awake, stops/starts a lot (turned off because annoying)
-            if ((Vector2)transform.position == destination && (Input.GetKey("up")))
+            if ((Vector2)transform.position == Destination && (Input.GetKey("up")))
         {
             //chomp.Play();
         }
 
         // Animation Parameters
-        Vector2 dir = destination - (Vector2)transform.position;
+        Vector2 dir = Destination - (Vector2)transform.position;
         moveDirection = CheckMoveDirection(dir);
         GetComponent<Animator>().SetFloat("DirX", dir.x);
         GetComponent<Animator>().SetFloat("DirY", dir.y);
@@ -111,13 +110,13 @@ public class PacManMoveScript : MovingEntity
         if (collision.name == "TeleportLeft")
         {
             Vector2 tp = new Vector2(27, 17);
-            destination = tp;
+            Destination = tp;
             gameObject.transform.position = tp;
         }
         if (collision.name == "TeleportRight")
         {
             Vector2 tp = new Vector2(2, 17);
-            destination = tp;
+            Destination = tp;
             gameObject.transform.position = tp;
         }
     }
@@ -125,6 +124,6 @@ public class PacManMoveScript : MovingEntity
     public void ResetGame()
     {
         gameObject.transform.position = startPos;
-        destination = startPos;
+        Destination = startPos;
     }
 }

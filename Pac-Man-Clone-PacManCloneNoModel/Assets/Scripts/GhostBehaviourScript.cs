@@ -43,7 +43,7 @@ public class GhostBehaviourScript : MovingEntity
             return;
         }
         PickTargetTile();
-        if ((Vector2)gameObject.transform.position == destination)
+        if ((Vector2)gameObject.transform.position == Destination)
         {
             waypointIndex = 0;
             UpdateLists();
@@ -51,7 +51,7 @@ public class GhostBehaviourScript : MovingEntity
         }
         else
         {
-            Move(gameObject.transform.position, destination, validTileList);
+            Move(gameObject.transform.position, Destination, validTileList);
         }
         
         //Sets variables so that the correct animation shows
@@ -136,9 +136,9 @@ public class GhostBehaviourScript : MovingEntity
     void SetDestination()
     {
         path.Clear();
-        destination = PickSmallestMagnitude(targetTile, validDestinations);
-        path.Add(PickSmallestMagnitude(destination, validTileList));      
-        path.Add(destination);
+        Destination = PickSmallestMagnitude(targetTile, validDestinations);
+        path.Add(PickSmallestMagnitude(Destination, validTileList));      
+        path.Add(Destination);
     }
 
     //Moves the ghost along the two waypoints
@@ -265,13 +265,13 @@ public class GhostBehaviourScript : MovingEntity
         if (co.name == "TeleportLeft")
         {
             Vector2 tp = new Vector2(27, 17);
-            destination = tp;
+            Destination = tp;
             gameObject.transform.position = tp;
         }
         if (co.name == "TeleportRight")
         {
             Vector2 tp = new Vector2(2, 17);
-            destination = tp;
+            Destination = tp;
             gameObject.transform.position = tp;
         }
     }

@@ -16,7 +16,8 @@ public class LevelController : MonoBehaviour
     }
 
     public Row[] levelgrid;
-    public Row[] startlevelgrid;
+    Row[] startlevelgrid;
+    public Vector2 size = new Vector2(9, 9);
 
     // Start is called before the first frame update
     void Start()
@@ -166,5 +167,27 @@ public class LevelController : MonoBehaviour
         }
         levelgrid[0].row[x] = last;
         NewTargetPosition();
+    }
+
+    public bool IsTileMoving(Vector2 gridPos)
+    {
+        if (gridPos.x < 0 || gridPos.x >= size.x || gridPos.y < 0 || gridPos.y >= size.y)
+        {
+            return true;
+        }
+        Tile tile = levelgrid[(int)gridPos.y].row[(int)gridPos.x];
+        if (tile == null)
+        {
+            return false;
+        }
+
+        return tile.IsMoving;
+    }
+
+    public Vector2 GridPos(Vector2 position)
+    {
+        position -= offset;
+        position += new Vector2(2, 2);
+        return new Vector2(Mathf.Floor(position.x / 4), Mathf.Floor(position.y / 4));
     }
 }

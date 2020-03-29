@@ -11,10 +11,12 @@ public class Tile : MonoBehaviour
     public LayerMask layermask2;
     //Collider2D passenger;
     MovingEntity passenger;
+    LevelController level;
     bool move;
 
     void Start()
     {
+        level = GetLevelController(transform);
         move = false;
     }
 
@@ -55,7 +57,7 @@ public class Tile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawLine(transform.position - transform.localScale * 2, transform.position + transform.localScale * 2, Color.red);
+        //Debug.DrawLine(transform.position - transform.localScale * 2, transform.position + transform.localScale * 2, Color.red);
         if ((Mathf.Abs(transform.position.x - targetposition.x) > 0.1f || Mathf.Abs(transform.position.y - targetposition.y) > 0.1f) && move)
         {
             transform.position += (new Vector3(targetposition.x, targetposition.y, 0) - transform.position) * 16 * Time.deltaTime;
@@ -76,6 +78,24 @@ public class Tile : MonoBehaviour
                 passenger.gameObject.transform.position = transform.position - new Vector3(passengerOffset.x, passengerOffset.y, 0);
             }
         }
+    }
 
+    LevelController GetLevelController(Transform t)
+    {
+        if (t.GetComponent<LevelController>() != null)
+        {
+            return t.GetComponent<LevelController>();
+        }
+
+        if (t.parent != null)
+        {
+            GetLevelController(t.parent.transform);
+        }
+        return null;
+    }
+
+    public bool IsMoving
+    {
+        get { return move; }
     }
 }

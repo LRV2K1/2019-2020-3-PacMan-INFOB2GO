@@ -493,13 +493,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e89df3bb695ed44d86f37b5be9c8d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: {fileID: 1638986860}
+  GridPos: {x: 0, y: 0}
   moveSpeed: 0.01
   layerMask:
     serializedVersion: 2
     m_Bits: 32516
   GameManager: {fileID: 1334309640}
   eatGhost: {fileID: 21316513}
-  destination: {x: 0, y: 0}
   targetTile: {x: 0, y: 0}
   scatterTile: {x: 0, y: 0}
   currentDir: {x: 0, y: 0}
@@ -25546,6 +25547,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6974569472308755433}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1638986860 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6974569470789261413, guid: 2b84411dccf7265479ba31685eac9f62,
+    type: 3}
+  m_PrefabInstance: {fileID: 6974569472308755433}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638986859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6019b0b34d91b428e2c71e16340d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1653784417
 GameObject:
   m_ObjectHideFlags: 0
@@ -27610,13 +27623,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe9de67ac1d60740a73a4a9bc7aeb7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: {fileID: 1638986860}
+  GridPos: {x: 0, y: 0}
   moveSpeed: 0.01
   layerMask:
     serializedVersion: 2
     m_Bits: 32516
   GameManager: {fileID: 1334309640}
   eatGhost: {fileID: 1789111524}
-  destination: {x: 0, y: 0}
   targetTile: {x: 0, y: 0}
   scatterTile: {x: 0, y: 0}
   currentDir: {x: 0, y: 0}
@@ -29571,13 +29585,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a506ee6c9605ad4f9a26ba9a285e1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: {fileID: 1638986860}
+  GridPos: {x: 0, y: 0}
   moveSpeed: 0.01
   layerMask:
     serializedVersion: 2
     m_Bits: 32516
   GameManager: {fileID: 1334309640}
   eatGhost: {fileID: 1900519879}
-  destination: {x: 0, y: 0}
   targetTile: {x: 0, y: 0}
   scatterTile: {x: 0, y: 0}
   currentDir: {x: 0, y: 0}
@@ -33066,13 +33081,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08d4c9249934b14fa03707cd64298ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: {fileID: 1638986860}
+  GridPos: {x: 0, y: 0}
   moveSpeed: 0.01
   layerMask:
     serializedVersion: 2
     m_Bits: 32516
   GameManager: {fileID: 1334309640}
   eatGhost: {fileID: 2132251049}
-  destination: {x: 0, y: 0}
   targetTile: {x: 0, y: 0}
   scatterTile: {x: 0, y: 0}
   currentDir: {x: 0, y: 0}
@@ -33494,6 +33510,11 @@ PrefabInstance:
       propertyPath: GameManager
       value: 
       objectReference: {fileID: 1334309640}
+    - target: {fileID: 6483563919097800842, guid: e8ddf371b5f588b4aac56d246c530a14,
+        type: 3}
+      propertyPath: level
+      value: 
+      objectReference: {fileID: 1638986860}
     - target: {fileID: 6483563919097800843, guid: e8ddf371b5f588b4aac56d246c530a14,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33563,6 +33584,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5342136505752775570, guid: 2b84411dccf7265479ba31685eac9f62,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6974569470789261410, guid: 2b84411dccf7265479ba31685eac9f62,
         type: 3}
       propertyPath: m_Name
@@ -33627,6 +33653,16 @@ PrefabInstance:
         type: 3}
       propertyPath: offset.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974569470789261413, guid: 2b84411dccf7265479ba31685eac9f62,
+        type: 3}
+      propertyPath: size.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974569470789261413, guid: 2b84411dccf7265479ba31685eac9f62,
+        type: 3}
+      propertyPath: size.y
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b84411dccf7265479ba31685eac9f62, type: 3}
