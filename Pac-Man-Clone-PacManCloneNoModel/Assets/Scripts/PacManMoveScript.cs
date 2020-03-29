@@ -109,15 +109,27 @@ public class PacManMoveScript : MovingEntity
 
         if (collision.name == "TeleportLeft")
         {
-            Vector2 tp = new Vector2(27, 17);
-            Destination = tp;
+            Vector2 tp = new Vector2(32, 19);
             gameObject.transform.position = tp;
+            Destination = transform.position;
         }
         if (collision.name == "TeleportRight")
         {
-            Vector2 tp = new Vector2(2, 17);
-            Destination = tp;
+            Vector2 tp = new Vector2(0, 19);
             gameObject.transform.position = tp;
+            Destination = transform.position;
+        }
+        if (collision.name == "TeleportTop")
+        {
+            Vector2 tp = new Vector2(16, 3);
+            gameObject.transform.position = tp;
+            Destination = transform.position;
+        }
+        if (collision.name == "TeleportBottom")
+        {
+            Vector2 tp = new Vector2(16, 35);
+            gameObject.transform.position = tp;
+            Destination = transform.position;
         }
     }
 
