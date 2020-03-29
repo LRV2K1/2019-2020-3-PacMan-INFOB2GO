@@ -7,7 +7,6 @@ using TMPro;
 public class PacManMoveScript : MovingEntity
 {
     public float movespeed = 0.3f;
-    public Vector2 destination = Vector2.zero;
     public AudioSource chomp;
     public Vector2 moveDirection;
     public TextMeshProUGUI score;
@@ -19,6 +18,7 @@ public class PacManMoveScript : MovingEntity
 
     void Start()
     {
+        destination = Vector2.zero;
         startPos = transform.position;
         destination = transform.position;
     }
@@ -75,12 +75,6 @@ public class PacManMoveScript : MovingEntity
         return moveDirection;
     }
 
-    public override void SetMove(bool move)
-    {
-        base.SetMove(move);
-        destination = transform.position;
-    }
-
     // Cast Line from 'next square in movedirection to 'Pac-Man'. True = hit pac man, ignores ghosts
     bool valid(Vector2 dir)
     {
@@ -94,7 +88,7 @@ public class PacManMoveScript : MovingEntity
     //Determines what happens when collided with. PacMan increases score when eating pellets, powers up due to power pellets and dies to ghosts
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "PowerPellet")
+        if (collision.tag == "PowerPellet" && move)
         {
             GameManager.GetComponent<GameManagerScript>().PowerPelletCollected();
             GameManager.GetComponent<GameManagerScript>().pelletsCollected += 1;
@@ -103,13 +97,13 @@ public class PacManMoveScript : MovingEntity
             StartCoroutine(GameManager.GetComponent<GameManagerScript>().CheckForGameEnd());
         }
 
-        if (collision.tag == "Pellet")
+        if (collision.tag == "Pellet" && move)
         {
             GameManager.GetComponent<GameManagerScript>().pelletsCollected += 1;
             score.GetComponent<ScoreScript>().ScorePellet();
             StartCoroutine(GameManager.GetComponent<GameManagerScript>().CheckForGameEnd());
         }
-        if (collision.tag == "Ghost" && collision.gameObject.GetComponent<GhostBehaviourScript>().frightened)
+        if (collision.tag == "Ghost" && collision.gameObject.GetComponent<GhostBehaviourScript>().frightened && move)
         {
             score.GetComponent<ScoreScript>().ScoreGhost();
         }

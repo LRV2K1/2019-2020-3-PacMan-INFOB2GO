@@ -10,7 +10,7 @@ public class GhostBehaviourScript : MovingEntity
     public AudioSource eatGhost;
 
     [HideInInspector]
-    public Vector2 destination, targetTile, scatterTile, currentDir, startPos;
+    public Vector2 targetTile, scatterTile, currentDir, startPos;
     [HideInInspector]
     public List<Vector2> validTileList, tileList, validDestinations, path;
     [HideInInspector]
@@ -75,7 +75,6 @@ public class GhostBehaviourScript : MovingEntity
     public override void SetMove(bool move)
     {
         base.SetMove(move);
-        destination = transform.position;
         currentDir = Vector2.zero;
         targetTile = transform.position;
         scatterTile = transform.position;
@@ -250,13 +249,13 @@ public class GhostBehaviourScript : MovingEntity
     //Determines what happens if the ghost collides with numerous objects
     void OnTriggerEnter2D(Collider2D co)
     {
-        if (co.name == "PacMan" && !frightened)
+        if (co.name == "PacMan" && !frightened && move)
         {
             //Call some method in gamemanager 
             GameManager.GetComponent<GameManagerScript>().PlayerDeath();
         }
 
-        if (co.name == "PacMan" && frightened)
+        if (co.name == "PacMan" && frightened && move)
         {
             eatGhost.Play();
             moveSpeed = 0.2f;
