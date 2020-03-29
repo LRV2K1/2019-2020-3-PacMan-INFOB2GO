@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5793028444538231480}
   - component: {fileID: 5793028444538231479}
   m_Layer: 0
-  m_Name: Power Pellet 2
-  m_TagString: Untagged
+  m_Name: Power Pellet
+  m_TagString: PowerPellet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
