@@ -83,7 +83,7 @@ public class GhostBehaviourScript : MovingEntity
         path.Add(transform.position);
     }
 
-    protected override void ResetDestination()
+    public override void ResetDestination()
     {
         base.ResetDestination();
         currentDir = Vector2.zero;

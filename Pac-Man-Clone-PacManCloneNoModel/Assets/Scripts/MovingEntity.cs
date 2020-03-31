@@ -8,6 +8,7 @@ public class MovingEntity : MonoBehaviour
     Vector2 destination;
     public LevelController level;
     public Vector2 GridPos;
+    Vector2 startposition;
 
     private void Update()
     {
@@ -17,6 +18,7 @@ public class MovingEntity : MonoBehaviour
 
     private void Start()
     {
+        startposition = transform.position;
         destination = transform.position;
     }
 
@@ -43,7 +45,7 @@ public class MovingEntity : MonoBehaviour
         }
     }
 
-    protected virtual void ResetDestination()
+    public virtual void ResetDestination()
     {
         transform.position = transform.position.Round();
         destination = transform.position;
@@ -53,5 +55,10 @@ public class MovingEntity : MonoBehaviour
     {
         Vector2 gridPos = level.GridPos(destination);
         return !level.IsTileMoving(gridPos);
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = startposition;
     }
 }

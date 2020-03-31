@@ -213,6 +213,7 @@ MonoBehaviour:
   layermask2:
     serializedVersion: 2
     m_Bits: 512
+  tileType: 6
 --- !u!1001 &22671498864816211
 PrefabInstance:
   m_ObjectHideFlags: 0

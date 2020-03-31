@@ -13,6 +13,7 @@ public class Tile : MonoBehaviour
     MovingEntity passenger;
     LevelController level;
     bool move;
+    public int tileType;
 
     void Start()
     {
@@ -48,8 +49,6 @@ public class Tile : MonoBehaviour
         if (passenger != null)
         {
             passenger.SetMove(false);
-            //passengerOffset = transform.position - passenger.transform.position;
-            //passengerOffset.Normalize();
             passengerOffset = Vector2.zero;
         }
     }
@@ -92,6 +91,23 @@ public class Tile : MonoBehaviour
             GetLevelController(t.parent.transform);
         }
         return null;
+    }
+
+    void OnTriggerEnter2D(Collider2D co)
+    {
+        GhostBehaviourScript moving = co.GetComponent<GhostBehaviourScript>();
+        if (moving == null || !move)
+        {
+            return;
+        }
+        if (tileType != 1)
+        {
+            moving.gameObject.transform.position = transform.position;
+            moving.ResetDestination();
+            return;
+        }
+        moving.ResetPosition();
+        moving.ResetDestination();
     }
 
     public bool IsMoving
