@@ -100,14 +100,13 @@ public class Tile : MonoBehaviour
         {
             return;
         }
-        if (tileType != 1)
+
+        Debug.Log("Test");
+        moving.gameObject.transform.position = transform.position;
+        if (tileType == 1)
         {
-            Debug.Log("Test");
-            moving.gameObject.transform.position = transform.position;
-            moving.ResetDestination();
-            return;
+            moving.ResetPosition();
         }
-        moving.ResetPosition();
         moving.ResetDestination();
     }
 
