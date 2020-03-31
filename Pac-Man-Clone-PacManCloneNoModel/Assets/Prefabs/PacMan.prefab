@@ -155,14 +155,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48df297c2214e324dac21502f492f4f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: {fileID: 0}
+  startPos: {x: 0, y: 0}
+  hitbox: {fileID: 6483563919097800845}
   movespeed: 0.2
-  destination: {x: 0, y: 0}
   chomp: {fileID: 6483563919097800847}
   moveDirection: {x: 0, y: 0}
   score: {fileID: 0}
   GameManager: {fileID: 0}
-  startPos: {x: 0, y: 0}
-  lineRenderer: {fileID: 0}
   timeSpent: 0
 --- !u!82 &6483563919097800847
 AudioSource:
