@@ -106,8 +106,8 @@ public class Tile : MonoBehaviour
             moving.ResetDestination();
             return;
         }
-        //moving.ResetPosition();
-        //moving.ResetDestination();
+        moving.ResetPosition();
+        moving.ResetDestination();
     }
 
     public bool IsMoving
