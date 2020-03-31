@@ -14,9 +14,11 @@ public class Tile : MonoBehaviour
     LevelController level;
     bool move;
     public int tileType;
+    BoxCollider2D[] colliders;
 
     void Start()
     {
+        colliders = gameObject.GetComponents<BoxCollider2D>();
         level = GetLevelController(transform);
         move = false;
     }
@@ -34,6 +36,10 @@ public class Tile : MonoBehaviour
             return;
         }
         move = true;
+        foreach(BoxCollider2D box in colliders)
+        {
+            box.enabled = false;
+        }
 
         GetPassengers();
        
@@ -84,6 +90,10 @@ public class Tile : MonoBehaviour
         else if (move)
         {
             move = false;
+            foreach (BoxCollider2D box in colliders)
+            {
+                box.enabled = true;
+            }
             transform.position = targetposition;
 
             if (passenger != null)
