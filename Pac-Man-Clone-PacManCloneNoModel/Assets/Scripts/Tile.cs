@@ -93,15 +93,16 @@ public class Tile : MonoBehaviour
         return null;
     }
 
-    void OnTriggerEnter2D(Collider2D co)
+    private void OnTriggerEnter2D(Collider2D co)
     {
-        GhostBehaviourScript moving = co.GetComponent<GhostBehaviourScript>();
-        if (moving == null || !move)
+        GhostBehaviourScript moving = co.gameObject.GetComponent<GhostBehaviourScript>();
+        if (moving == null || move)
         {
             return;
         }
         if (tileType != 1)
         {
+            Debug.Log("Test");
             moving.gameObject.transform.position = transform.position;
             moving.ResetDestination();
             return;
