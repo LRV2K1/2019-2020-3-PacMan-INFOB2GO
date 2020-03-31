@@ -494,7 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 1638986860}
-  GridPos: {x: 0, y: 0}
+  startPos: {x: 0, y: 0}
   moveSpeed: 0.01
   layerMask:
     serializedVersion: 2
@@ -504,7 +504,6 @@ MonoBehaviour:
   targetTile: {x: 0, y: 0}
   scatterTile: {x: 0, y: 0}
   currentDir: {x: 0, y: 0}
-  startPos: {x: 0, y: 0}
   validTileList: []
   tileList: []
   validDestinations: []
@@ -27738,7 +27737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 1638986860}
-  GridPos: {x: 0, y: 0}
+  startPos: {x: 0, y: 0}
   moveSpeed: 0.01
   layerMask:
     serializedVersion: 2
@@ -27748,7 +27747,6 @@ MonoBehaviour:
   targetTile: {x: 0, y: 0}
   scatterTile: {x: 0, y: 0}
   currentDir: {x: 0, y: 0}
-  startPos: {x: 0, y: 0}
   validTileList: []
   tileList: []
   validDestinations: []
@@ -29700,7 +29698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 1638986860}
-  GridPos: {x: 0, y: 0}
+  startPos: {x: 0, y: 0}
   moveSpeed: 0.01
   layerMask:
     serializedVersion: 2
@@ -29710,7 +29708,6 @@ MonoBehaviour:
   targetTile: {x: 0, y: 0}
   scatterTile: {x: 0, y: 0}
   currentDir: {x: 0, y: 0}
-  startPos: {x: 0, y: 0}
   validTileList: []
   tileList: []
   validDestinations: []
@@ -32974,7 +32971,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132251047}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14, y: 22, z: 0}
+  m_LocalPosition: {x: 14, y: 19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1103639329}
@@ -33196,7 +33193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 1638986860}
-  GridPos: {x: 0, y: 0}
+  startPos: {x: 0, y: 0}
   moveSpeed: 0.01
   layerMask:
     serializedVersion: 2
@@ -33206,7 +33203,6 @@ MonoBehaviour:
   targetTile: {x: 0, y: 0}
   scatterTile: {x: 0, y: 0}
   currentDir: {x: 0, y: 0}
-  startPos: {x: 0, y: 0}
   validTileList: []
   tileList: []
   validDestinations: []

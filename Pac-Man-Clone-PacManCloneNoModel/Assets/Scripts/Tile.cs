@@ -34,15 +34,8 @@ public class Tile : MonoBehaviour
             return;
         }
         move = true;
-        Collider2D collider = Physics2D.OverlapArea(transform.position - transform.localScale * 2, transform.position + transform.localScale * 2, layermask + layermask2);
-        if (collider != null)
-        {
-            passenger = collider.GetComponent<MovingEntity>();
-        }
-        else
-        {
-            passenger = null;
-        }
+
+        GetPassengers();
        
         this.targetposition = targetposition;
 
@@ -53,9 +46,31 @@ public class Tile : MonoBehaviour
         }
     }
 
+    void GetPassengers()
+    {
+        Collider2D collider = Physics2D.OverlapArea(transform.position - transform.localScale * 2, transform.position + transform.localScale * 2, layermask + layermask2);
+        if (collider != null)
+        {
+            passenger = collider.GetComponent<MovingEntity>();
+        }
+        else
+        {
+            passenger = null;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (tileType == 1)
+        {
+            GetPassengers();
+            if (passenger != null)
+            {
+                passenger.ResetPosition();
+                passenger.ResetDestination();
+            }
+        }
         //Debug.DrawLine(transform.position - transform.localScale * 2, transform.position + transform.localScale * 2, Color.red);
         if ((Mathf.Abs(transform.position.x - targetposition.x) > 0.1f || Mathf.Abs(transform.position.y - targetposition.y) > 0.1f) && move)
         {
