@@ -10,7 +10,7 @@ public class GhostBehaviourScript : MovingEntity
     public AudioSource eatGhost;
 
     [HideInInspector]
-    public Vector2 targetTile, scatterTile, currentDir, startPos;
+    public Vector2 targetTile, scatterTile, currentDir;
     [HideInInspector]
     public List<Vector2> validTileList, tileList, validDestinations, path;
     [HideInInspector]

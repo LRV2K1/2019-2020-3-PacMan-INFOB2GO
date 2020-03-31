@@ -7,18 +7,17 @@ public class MovingEntity : MonoBehaviour
     protected bool move = true;
     Vector2 destination;
     public LevelController level;
-    public Vector2 GridPos;
-    Vector2 startposition;
-
-    private void Update()
-    {
-        GridPos = level.GridPos((Vector2)transform.position + Vector2.down);
-        Debug.DrawLine(transform.position, destination, Color.red);
-    }
+    public Vector2 startPos;
 
     private void Start()
     {
-        startposition = transform.position;
+        startPos = gameObject.transform.position;
+        destination = transform.position;
+    }
+
+    private void Awake()
+    {
+        startPos = transform.position;
         destination = transform.position;
     }
 
@@ -59,6 +58,6 @@ public class MovingEntity : MonoBehaviour
 
     public void ResetPosition()
     {
-        transform.position = startposition;
+        transform.position = startPos;
     }
 }

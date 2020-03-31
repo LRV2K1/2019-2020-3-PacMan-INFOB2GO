@@ -11,7 +11,6 @@ public class PacManMoveScript : MovingEntity
     public Vector2 moveDirection;
     public TextMeshProUGUI score;
     public GameObject GameManager;
-    public Vector2 startPos;
 
     [HideInInspector]
     public float timeSpent;
