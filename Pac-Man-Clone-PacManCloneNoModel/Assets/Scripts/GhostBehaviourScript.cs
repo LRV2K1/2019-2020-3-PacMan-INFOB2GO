@@ -83,6 +83,17 @@ public class GhostBehaviourScript : MovingEntity
         path.Add(transform.position);
     }
 
+    protected override void ResetDestination()
+    {
+        base.ResetDestination();
+        currentDir = Vector2.zero;
+        targetTile = transform.position;
+        scatterTile = transform.position;
+        waypointIndex = 0;
+        path.Clear();
+        path.Add(transform.position);
+    }
+
     //Sets ghost behaviour to scatter, can be overriden to make each ghost scatter behaviour different
     public IEnumerator Scatter(int time)
     {
@@ -133,7 +144,7 @@ public class GhostBehaviourScript : MovingEntity
     }
 
     //Clears current path, adds 2 waypoints, the destination tile and the closest valid tile to that destination to be used as waypoints
-    void SetDestination()
+     void SetDestination()
     {
         path.Clear();
         Destination = PickSmallestMagnitude(targetTile, validDestinations);

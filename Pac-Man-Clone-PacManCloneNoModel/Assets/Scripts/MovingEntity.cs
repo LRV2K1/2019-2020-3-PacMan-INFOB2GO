@@ -38,32 +38,20 @@ public class MovingEntity : MonoBehaviour
             }
             else
             {
-                destination = transform.position;
+                ResetDestination();
             }
         }
+    }
+
+    protected virtual void ResetDestination()
+    {
+        transform.position = transform.position.Round();
+        destination = transform.position;
     }
 
     bool LegalDestination(Vector2 destination)
     {
         Vector2 gridPos = level.GridPos(destination);
-        /*
-        if (gridPos.x < 0)
-        {
-            return false;
-        }
-        if (gridPos.x >= level.size.x)
-        {
-            return false;
-        }
-        if (gridPos.y < 0)
-        {
-            return false;
-        }
-        if (gridPos.y >= level.size.y)
-        {
-            return false;
-        }
-        */
         return !level.IsTileMoving(gridPos);
     }
 }
